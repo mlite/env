@@ -13,5 +13,9 @@ mkdir /home/$USER/local
 ./configure --prefix=/home/$USER/local
 make install
 
+# we need to use ghc-7.8.3 to install cabal-install
+export PATH=$HOME/local/bin:$PATH
+
+
 cabal update
 cabal install cabal-install
