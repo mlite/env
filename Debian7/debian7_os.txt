@@ -1,0 +1,5 @@
+1. su root
+2. apt-get install sudo
+3. adduser $USER sudo
+4. visudo 
+   add $USER to sudo
