@@ -10,12 +10,6 @@ mkdir /home/$USER/local
 ./configure --prefix=/home/$USER/local
 make install
 
-for i in $(cat debian7_package.list)
-do
-  echo "apt-get install $i" 
-  apt-get install $i
-done
-
 cabal update
 cabal install happy
 cabal install alex
