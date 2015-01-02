@@ -5,3 +5,6 @@
    # User privilege specification
    root        ALL=(ALL:ALL) ALL
    newuser    ALL=(ALL:ALL) ALL
+5. su $USER
+   add the following enviroment to .bashrc
+   export PATH=.:$HOME/local/bin:$HOME/.cabal/bin:$PATH
