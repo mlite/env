@@ -1,3 +1,3 @@
 #!/bin/bash 
-sudo apt-get remove cabal
-sudo apt-get remove ghc
+sudo apt-get -y remove cabal
+sudo apt-get -y remove ghc

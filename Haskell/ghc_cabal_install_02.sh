@@ -14,11 +14,3 @@ export PATH=$HOME/local/bin:$PATH
 
 cabal update
 cabal install cabal-install
-
-export PATH=$HOME/.cabal/bin:$PATH
-
-cabal update
-cabal install happy
-cabal install alex
-cabal install gtk2hs-buildtools
-cabal install leksah
