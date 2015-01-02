@@ -2,7 +2,7 @@
 
 echo "sudo $USER, please type the password of $USER"
 sudo
-for i in $(cat debian7_package.list)
+for i in $(cat debian_package.list)
 do
   cmd="apt-get -y install $i"
   echo "$cmd"
