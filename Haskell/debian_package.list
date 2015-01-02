@@ -1,3 +1,4 @@
 ghc
 cabal-install
 libncurses5-dev
+zlib1g-dev
