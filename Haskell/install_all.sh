@@ -1,7 +1,4 @@
 #!/bin/bash
-export PATH=.:$PATH
-debian7_sudo.sh
-debian7_install_01.sh
+debian_install_01.sh
 ghc_cabal_install_02.sh
-debian7_sudo.sh
-debian7_remove_03.sh
+debian_remove_03.sh

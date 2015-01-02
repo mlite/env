@@ -10,7 +10,5 @@ mkdir /home/$USER/local
 ./configure --prefix=/home/$USER/local
 make install
 
-export PATH=$HOME/local/bin:$PATH
-
 cabal update
 cabal install cabal-install
