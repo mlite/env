@@ -2,3 +2,7 @@ ghc
 cabal-install
 libncurses5-dev
 zlib1g-dev
+libbsd-dev
+libffi-dev
+libgmp-dev
+libgmpxx4ldbl
