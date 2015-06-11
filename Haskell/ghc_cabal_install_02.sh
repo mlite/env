@@ -11,6 +11,7 @@ bzip2 -dc ghc-7.8.3-src.tar.bz2 | tar xvf -
 cabal update
 cabal install happy
 cabal install alex
+cabal install hoopl
 
 export PATH=$HOME/.cabal/bin:$PATH
  
