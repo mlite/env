@@ -35,9 +35,7 @@ chroot $chroot_dir apt-get update
 chroot $chroot_dir apt-get upgrade -y
 chroot $chroot_dir apt-get install -y locales
 chroot $chroot_dir locale-gen en_US en_US.UTF-8
-##chroot $chroot_dir dpkg-reconfigure locales
-chroot $chroot_dir "export LC_CTYPE=en_US.UTF-8" >> /root/.bashrc
-chroot $chroot_dir "export LC_ALL=en_US.UTF-8" >> /root/.bashrc
+chroot $chroot_dir dpkg-reconfigure locales
 
 ### install debian packages
 chroot $chroot_dir apt-get install -y build-essential unzip cmake python
