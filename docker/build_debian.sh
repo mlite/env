@@ -16,6 +16,12 @@ apt-get -t jessie-backports install -y docker.io
 ### install a minbase system with debootstrap
 export DEBIAN_FRONTEND=noninteractive
 debootstrap --arch $arch $suite $chroot_dir $apt_mirror
+echo "proc $chroot_dir/proc proc defaults 0 0" >> /etc/fstab
+mount proc $chroot_dir/proc -t proc
+echo "sysfs $chroot_dir/sys sysfs defaults 0 0" >> /etc/fstab
+mount sysfs $chroot_dir/sys -t sysfs
+cp /etc/hosts $chroot_dir/etc/hosts
+#cp /proc/mounts $chroot_dir/etc/mtab
 
 ### update the list of package sources
 cat <<EOF > $chroot_dir/etc/apt/sources.list
