@@ -35,8 +35,6 @@ mkdir llvm-build
 
 
 cd llvm-build
-../llvm-3.5.0.src/configure --prefix=$HOME/llvm-install
+../llvm-3.5.0.src/configure --prefix=$HOME/local/llvm
 make -j ${NUMJOBS}
 make -j ${NUMJOBS} check-all
-
-

@@ -9,6 +9,7 @@ apt_mirror="http://ftp.us.debian.org/debian"
 docker_image="32bit/debian:$suite"
 
 ### make sure that the required tools are installed
+apt-get update
 apt-get install -y debootstrap dchroot
 apt-get -t jessie-backports install -y docker.io
 
