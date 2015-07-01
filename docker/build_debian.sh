@@ -33,7 +33,7 @@ chroot $chroot_dir "export LC_CTYPE=en_US.UTF-8" >> /root/.bashrc
 chroot $chroot_dir "export LC_ALL=en_US.UTF-8" >> /root/.bashrc
 
 ### install debian packages
-chroot $chroot_dir apt-get install -y build-essential unzip cmake
+chroot $chroot_dir apt-get install -y build-essential unzip cmake python
 chroot $chroot_dir apt-get install -y libncurses5-dev zlib1g-dev libbsd-dev libffi-dev libgmp-dev libgmpxx4ldbl
 chroot $chroot_dir apt-get install -y ghc cabal-install
 
