@@ -3,7 +3,7 @@
 
 ### settings
 arch=i386
-suite=${1:-jessie}
+suite=${1:-wheezy}
 chroot_dir="/var/chroot/$suite"
 apt_mirror="http://ftp.us.debian.org/debian"
 docker_image="32bit/debian:$suite"
@@ -42,6 +42,10 @@ chroot $chroot_dir apt-get install -y ghc cabal-install
 chroot $chroot_dir apt-get autoclean
 chroot $chroot_dir apt-get clean
 chroot $chroot_dir apt-get autoremove
+
+### install LLVM
+cp llvm_install.sh $chroot_dir/root
+chroot $chroot_dir sh /root/llvm_install.sh
 
 ### bootstrap ghc-7.8.3
 chroot $chroot_dir cabal update
