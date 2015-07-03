@@ -40,7 +40,7 @@ chroot $chroot_dir dpkg-reconfigure locales
 ### install debian packages
 chroot $chroot_dir apt-get install -y build-essential unzip cmake python
 chroot $chroot_dir apt-get install -y libncurses5-dev zlib1g-dev libbsd-dev libffi-dev libgmp-dev libgmpxx4ldbl
-chroot $chroot_dir apt-get install -y ghc cabal-install
+chroot $chroot_dir apt-get install -y libtool git 
 
 
 ### cleanup
@@ -48,20 +48,9 @@ chroot $chroot_dir apt-get autoclean
 chroot $chroot_dir apt-get clean
 chroot $chroot_dir apt-get autoremove
 
-### install LLVM
-cp llvm_install.sh $chroot_dir/root
+### install build enviroment
+cp install_env.sh $chroot_dir/root
 chroot $chroot_dir sh /root/llvm_install.sh
-
-### bootstrap ghc-7.8.3
-chroot $chroot_dir cabal update
-chroot $chroot_dir cabal install happy
-chroot $chroot_dir cabal install alex
-chroot $chroot_dir cabal install hoopl
-
-### get and build ghc-7.8.3
-cp ghc_cabal_install.sh $chroot_dir/root
-chroot $chroot_dir sh /root/ghc_cabal_install.sh
-#chroot $chroot_dir cabal install cabal-install
 
 ### create a tar archive from the chroot directory
 tar cfz debian.tgz -C $chroot_dir .
