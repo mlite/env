@@ -4,5 +4,5 @@ git clone https://github.com/mlite/env
 cd $HOME/env/Llvm
 sh install.sh
 
-cd $HOME/Haskell
+cd $HOME/env/Haskell
 sh install.sh
