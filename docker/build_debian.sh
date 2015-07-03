@@ -40,7 +40,7 @@ chroot $chroot_dir dpkg-reconfigure locales
 ### install debian packages
 chroot $chroot_dir apt-get install -y build-essential unzip cmake python
 chroot $chroot_dir apt-get install -y libncurses5-dev zlib1g-dev libbsd-dev libffi-dev libgmp-dev libgmpxx4ldbl
-chroot $chroot_dir apt-get install -y libtool git 
+chroot $chroot_dir apt-get install -y libtool git sudo 
 
 
 ### cleanup
