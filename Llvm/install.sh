@@ -43,5 +43,6 @@ cd ./llvm-build
 ../llvm-3.5.0.src/configure --prefix=$HOME/local/llvm
 make -j $NJOBS
 make check-all
-
-
+if [ $? -eq 0 ]; then
+  make install
+fi
