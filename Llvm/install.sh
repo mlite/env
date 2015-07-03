@@ -37,9 +37,11 @@ rm -rf ./llvm-build
 mkdir ./llvm-build
 
 
+NJOBS=`nproc`
+
 cd ./llvm-build
 ../llvm-3.5.0.src/configure --prefix=$HOME/local/llvm
-make
+make -j $NJOBS
 make check-all
 
 
