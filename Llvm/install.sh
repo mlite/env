@@ -1,6 +1,8 @@
 #!/bin/bash
+mkdir $HOME/local
+
 if [ ! -f llvm-3.5.0.src.tar.xz ]; then
-  wget http://llvm.org/releases/3.5.0/llvm-3.5.0.src.tar.xz
+  wget http://llvm.org/releases/4.5.0/llvm-3.5.0.src.tar.xz
 fi
 
 if [ ! -f cfe-3.5.0.src.tar.xz ]; then
@@ -16,29 +18,27 @@ if [ ! -f test-suite-3.5.0.src.tar.xz ]; then
 fi
 
 
-
-
 echo "unzip llvm ..."
 rm -rf llvm-3.5.0.src
-tar xvfJ llvm-3.5.0.src.tar.xz
+tar xvfJ llvm-3.5.0.src.tar.xz -C ./
 
 echo "unzip clang ..."
-tar xvfJ cfe-3.5.0.src.tar.xz -C llvm-3.5.0.src/tools
-mv llvm-3.5.0.src/tools/cfe-3.5.0.src llvm-3.5.0.src/tools/clang
-cp llvm_patch/ExternalModulePass.cpp llvm-3.5.0.src/tools/clang/CodeGen
-cd llvm-3.5.0.src
-patch -p1 -i ../llvm_patch/externalModulePass.patch 
+tar xvfJ cfe-3.5.0.src.tar.xz -C ./llvm-3.5.0.src/tools
+mv llvm-3.5.0.src/tools/cfe-3.5.0.src ./llvm-3.5.0.src/tools/clang
+cp llvm_patch/ExternalModulePass.cpp ./llvm-3.5.0.src/tools/clang/CodeGen
+cd ./llvm-3.5.0.src
+patch -p1 -i ./llvm_patch/externalModulePass.patch 
 cd ..
 
 echo "unzip test-suite ..."
-tar xvfJ test-suite-3.5.0.src.tar.xz -C llvm-3.5.0.src/projects
+tar xvfJ test-suite-3.5.0.src.tar.xz -C ./llvm-3.5.0.src/projects
 
-rm -rf llvm-build
-mkdir llvm-build
+rm -rf ./llvm-build
+mkdir ./llvm-build
 
 
-cd llvm-build
-../llvm-3.5.0.src/configure --prefix=/home/$USER/llvm-install
+cd ./llvm-build
+../llvm-3.5.0.src/configure --prefix=$HOME/local/llvm
 make
 make check-all
 
