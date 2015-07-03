@@ -50,9 +50,10 @@ chroot $chroot_dir apt-get autoremove
 
 ### install build enviroment
 cp install_env.sh $chroot_dir/root
-chroot $chroot_dir sh /root/llvm_install.sh
+chroot $chroot_dir sh /root/install_env.sh
 
 ### create a tar archive from the chroot directory
+umount proc sysfs
 tar cfz debian.tgz -C $chroot_dir .
 
 ### import this tar archive into a docker image:
@@ -63,4 +64,4 @@ cat debian.tgz | docker import - $docker_image
 
 ### cleanup
 rm debian.tgz
-#rm -rf $chroot_dir
+rm -rf $chroot_dir
