@@ -49,6 +49,7 @@ chroot $chroot_dir apt-get clean
 chroot $chroot_dir apt-get autoremove
 
 ### install build enviroment
+chroot $chroot_dir git clone https://github.com/mlite/env
 cp install_env.sh $chroot_dir/root
 chroot $chroot_dir sh /root/install_env.sh
 
