@@ -2,7 +2,7 @@
 mkdir $HOME/local
 
 if [ ! -f llvm-3.5.0.src.tar.xz ]; then
-  wget http://llvm.org/releases/4.5.0/llvm-3.5.0.src.tar.xz
+  wget http://llvm.org/releases/3.5.0/llvm-3.5.0.src.tar.xz
 fi
 
 if [ ! -f cfe-3.5.0.src.tar.xz ]; then
