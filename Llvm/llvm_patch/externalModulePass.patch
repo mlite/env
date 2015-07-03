@@ -1,0 +1,37 @@
+diff -crB llvm-3.5.0.src/tools/clang/lib/CodeGen/BackendUtil.cpp /home/nwang/vm_share/env/Llvm/llvm-3.5.0.src/tools/clang/lib/CodeGen/BackendUtil.cpp
+*** llvm-3.5.0.src/tools/clang/lib/CodeGen/BackendUtil.cpp	2014-07-29 17:07:54.000000000 -0700
+--- /home/nwang/vm_share/env/Llvm/llvm-3.5.0.src/tools/clang/lib/CodeGen/BackendUtil.cpp	2015-07-02 19:37:47.748062200 -0700
+***************
+*** 527,532 ****
+--- 527,534 ----
+    return true;
+  }
+  
++ extern Module * runExternalModulePass (DiagnosticsEngine &Diags, Module * TheModule);
++ 
+  void EmitAssemblyHelper::EmitAssembly(BackendAction Action, raw_ostream *OS) {
+    TimeRegion Region(llvm::TimePassesIsEnabled ? &CodeGenerationTime : nullptr);
+    llvm::formatted_raw_ostream FormattedOS;
+***************
+*** 580,585 ****
+--- 582,588 ----
+      PrettyStackTraceString CrashInfo("Per-module optimization passes");
+      PerModulePasses->run(*TheModule);
+    }
++   TheModule = runExternalModulePass(Diags, TheModule);
+  
+    if (CodeGenPasses) {
+      PrettyStackTraceString CrashInfo("Code generation");
+diff -crB llvm-3.5.0.src/tools/clang/lib/CodeGen/CMakeLists.txt /home/nwang/vm_share/env/Llvm/llvm-3.5.0.src/tools/clang/lib/CodeGen/CMakeLists.txt
+*** llvm-3.5.0.src/tools/clang/lib/CodeGen/CMakeLists.txt	2014-07-13 22:01:53.000000000 -0700
+--- /home/nwang/vm_share/env/Llvm/llvm-3.5.0.src/tools/clang/lib/CodeGen/CMakeLists.txt	2015-07-02 19:38:01.288062200 -0700
+***************
+*** 62,67 ****
+--- 62,68 ----
+    ModuleBuilder.cpp
+    SanitizerBlacklist.cpp
+    TargetInfo.cpp
++   ExternalModulePass.cpp
+  
+    DEPENDS
+    intrinsics_gen
