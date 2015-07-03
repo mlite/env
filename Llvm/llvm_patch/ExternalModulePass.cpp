@@ -16,6 +16,9 @@
 #include "llvm/IR/DataLayout.h"
 #include "llvm/Support/FileSystem.h"
 #include "llvm/Support/SourceMgr.h"
+#include <time.h>
+#include <sstream>
+#include <string>
 using namespace clang;
 using namespace llvm;
 
@@ -37,7 +40,16 @@ Module * runExternalModulePass (DiagnosticsEngine &Diags, Module * TheModule)
 		std::string ErrorInfo;
 
 		std::string outputFileName = std::string("/tmp/");
-		outputFileName.append(originalModuleId);
+		if (originalModuleId.compare("-") == 0) {
+			srand(time(NULL));
+			std::ostringstream convert;
+			convert << rand();
+			outputFileName.append(convert.str());
+		} else {
+			std::string tempModuleId = std::string(originalModuleId);
+			std::replace (tempModuleId.begin(), tempModuleId.end(), '/', '_');
+			outputFileName.append(tempModuleId);
+		}
 		outputFileName.append(".");
 		outputFileName.append(passName);
 		outputFileName.append(".bc");
