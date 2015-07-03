@@ -28,6 +28,7 @@ mv llvm-3.5.0.src/tools/cfe-3.5.0.src llvm-3.5.0.src/tools/clang
 cp llvm_patch/ExternalModulePass.cpp llvm-3.5.0.src/tools/clang/CodeGen
 cd llvm-3.5.0.src
 patch -p1 -i ../llvm_patch/externalModulePass.patch 
+cd ..
 
 echo "unzip test-suite ..."
 tar xvfJ test-suite-3.5.0.src.tar.xz -C llvm-3.5.0.src/projects
