@@ -5,3 +5,5 @@ libffi-dev
 libgmp-dev
 libgmpxx4ldbl
 ghc
+byacc
+flex

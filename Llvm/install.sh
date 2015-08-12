@@ -1,4 +1,5 @@
 #!/bin/bash
+SCRIPT_PATH=$(dirname $(readlink -f $0))
 mkdir $HOME/local
 
 if [ ! -f llvm-3.5.0.src.tar.xz ]; then
