@@ -6,6 +6,9 @@ fi
 
 bname=`basename $1 .gpg`
 
+if [ -f ${bname} ]; then
+  mv ${bname} ${bname.bak}
+fi
 gpg --output ${bname} --passphrase $3 --decrypt $1 
 
 tar xvfJ ${bname} --directory=$2
