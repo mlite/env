@@ -6,7 +6,7 @@ fi
 
 bname=`basename $1 .gpg`
 
-gpg --output ${bname} --passphrase $2 --decrypt $1 
+gpg --output ${bname} --passphrase $3 --decrypt $1 
 
 tar xvfJ ${bname} --directory=$2
 
