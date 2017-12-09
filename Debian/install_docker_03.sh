@@ -26,7 +26,4 @@ sudo apt-get install docker-ce -y
 #verify it works
 sudo docker run hello-world
 
-
-
-
-sudo useradd -G docker $USER
+sudo usermod -aG docker $USER
