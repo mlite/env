@@ -1,4 +1,4 @@
 #!/bin/bash
-sudo apt-get install -y python-dev
-sudo apt-get install -y python-pip
-sudo apt-get install -y virtualenv
+# this is needed for buildbot_travis
+sudo apt-get install -y build-essential python-dev libffi-dev libssl-dev python-pip
+pip install virtualenv
