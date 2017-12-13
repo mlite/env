@@ -6,8 +6,7 @@ source sandbox/bin/activate
 
 pip install --upgrade pip
 pip install service_identity
-pip install buildbot-grid-view
+pip install 'buildbot[bundle]'
 pip install buildbot_travis
-buildbot create-master master
-cp master/master.cfg.sample master/master.cfg
+bbtravis create-master master
 buildbot start master
