@@ -1,12 +1,20 @@
 [Unit]
 Description=BuildBot worker service
+Wants=network.target
 After=network.target
 
 [Service]
+Environment="PATH=/home/buildbot_worker/bb-worker/sandbox/bin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin"
+Type=forking
 User=buildbot_worker
 Group=buildbot
+Restart=always
 WorkingDirectory=/home/buildbot_worker/bb_worker
-ExecStart=/home/buildbot_worker/bb_worker/start.sh
+PIDFile=/home/buildbot_worker/bb_worker/worker/twistd.pid
+ExecStart=/home/buildbot_worker/bb_worker/sandbox/bin/buildbot-worker start worker
+ExecReload=/home/buildbot_worker/bb_worker/sandbox/bin/buildbot-worker restart worker
+ExecStop=/home/buildbot_worker/bb_worker/sandbox/bin/buildbot-worker stop worker
+Restart=always
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
