@@ -46,12 +46,14 @@ prompt_token() {
   sed -i "s/<$1>/$(printf '%q' "$VAL")/g" $SERVICE_FILE
 }
 
-instantialize_service () {
+get_template() {
     echo "--- Download template ---"
     cp $mypath/service.sh.in $SERVICE_FILE
     chmod +x "$SERVICE_FILE"
     echo ""
-    
+}
+
+instantialize_service () {
     echo "--- Customize ---"
     echo "I'll now ask you some information to customize script"
     echo "Press Ctrl+C anytime to abort."
@@ -107,6 +109,8 @@ install_init () {
 
 if [ -n "$FILE" ]; then
     SERVICE_FILE = $FILE
+else
+    get_template 
 fi
 
 instantialize_service
