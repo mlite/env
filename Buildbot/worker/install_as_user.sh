@@ -19,4 +19,7 @@ echo "HOST:${BHOST}"
 echo "WORKER:${BWORKER}"
 echo "PASSWORD:${BPASSWORD}"
 
+if [ -d worker ]; then
+   rm -rf worker
+fi
 buildbot-worker create-worker worker ${BHOST} ${BWORKER} ${BPASSWORD}
