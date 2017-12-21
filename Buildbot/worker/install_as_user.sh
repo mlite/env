@@ -1,6 +1,10 @@
 #!/bin/bash
 mypath=$(dirname $(readlink -f $0))
 
+if [ -f $mypath/config ]; then
+  . $mypath/config
+fi
+
 cd $HOME
 
 virtualenv --no-site-packages sandbox
@@ -11,4 +15,8 @@ pip install buildbot-worker
 # required for 'runtests' build
 pip install setuptools-trial
 
-buildbot-worker create-worker worker localhost example-worker pass
+echo "HOST:${BHOST}"
+echo "WORKER:${BWORKER}"
+echo "PASSWORD:${BPASSWORD}"
+
+buildbot-worker create-worker worker ${BHOST} ${BWORKER} ${BPASSWORD}
