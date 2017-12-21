@@ -7,3 +7,6 @@ User=buildbot_worker
 Group=buildbot
 WorkingDirectory=/home/buildbot_worker/bb_worker
 ExecStart=/home/buildbot_worker/bb_worker/start.sh
+
+[Install]
+WantedBy=default.target
