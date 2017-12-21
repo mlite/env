@@ -4,16 +4,16 @@ Wants=network.target
 After=network.target
 
 [Service]
-Environment="PATH=/home/buildbot_worker/bb-worker/sandbox/bin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin"
+Environment="PATH=/home/buildbot_worker/sandbox/bin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin"
 Type=forking
 User=buildbot_worker
 Group=buildbot
 Restart=always
-WorkingDirectory=/home/buildbot_worker/bb_worker
-PIDFile=/home/buildbot_worker/bb_worker/worker/twistd.pid
-ExecStart=/home/buildbot_worker/bb_worker/sandbox/bin/buildbot-worker start worker
-ExecReload=/home/buildbot_worker/bb_worker/sandbox/bin/buildbot-worker restart worker
-ExecStop=/home/buildbot_worker/bb_worker/sandbox/bin/buildbot-worker stop worker
+WorkingDirectory=/home/buildbot_worker
+PIDFile=/home/buildbot_worker/worker/twistd.pid
+ExecStart=/home/buildbot_worker/sandbox/bin/buildbot-worker start worker
+ExecReload=/home/buildbot_worker/sandbox/bin/buildbot-worker restart worker
+ExecStop=/home/buildbot_worker/sandbox/bin/buildbot-worker stop worker
 Restart=always
 
 [Install]
