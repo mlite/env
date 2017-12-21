@@ -1,8 +1,7 @@
 #!/bin/bash
 mypath=$(dirname $(readlink -f $0))
 
-mkdir -p ~/bb-worker
-cd ~/bb-worker
+cd $HOME
 
 virtualenv --no-site-packages sandbox
 source sandbox/bin/activate
