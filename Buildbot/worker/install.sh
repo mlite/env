@@ -1,4 +1,12 @@
 #!/bin/bash
+if [ "$#" -eq 1 ]; then
+    U=$1
+else
+    U=$USER
+fi
+if [ "$U" == "$USER" ]; then
+    su $U
+fi
 mkdir -p ~/bb-worker
 cd ~/bb-worker
 
