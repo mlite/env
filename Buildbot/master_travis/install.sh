@@ -1,12 +1,6 @@
 #!/bin/bash
-mkdir -p ~/master
-cd ~/master
-virtualenv --no-site-packages sandbox
-source sandbox/bin/activate
+mypath=$(dirname $(readlink -f $0))
 
-pip install --upgrade pip
-pip install service_identity
-pip install 'buildbot[bundle]'
-pip install buildbot_travis
-bbtravis create-master master
-buildbot start master
+${mypath}/create_user.sh
+sudo -u buildbot_master ${mypath}/install_as_user.sh
+${mypath}/make_it_daemon.sh
