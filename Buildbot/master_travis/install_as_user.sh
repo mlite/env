@@ -1,6 +1,4 @@
 #!/bin/bash
-mkdir -p ~/master
-cd ~/master
 virtualenv --no-site-packages sandbox
 source sandbox/bin/activate
 
