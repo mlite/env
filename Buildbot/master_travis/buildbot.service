@@ -1,0 +1,19 @@
+[Unit]
+Description=Buildbot Master
+Wants=network.target
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/home/buildbot_master/master/twistd.pid
+WorkingDirectory=/home/buildbot_master/master
+ExecStart=/home/buildbot_master/sandbox/bin/buildbot start master
+ExecReload=/home/buildbot_master/sandbox/bin/buildbot reconfig master
+ExecStop=/home/buildbot_master/sandbox/bin/buildbot stop master
+Restart=always
+User=buildbot_master
+Group=buildbot
+
+
+[Install]
+WantedBy=multi-user.target
