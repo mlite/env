@@ -11,7 +11,7 @@ virtualenv --no-site-packages sandbox
 source sandbox/bin/activate
 
 pip install --upgrade pip
-pip install buildbot-worker
+pip install 'buildbot-worker==0.9.14'
 # required for 'runtests' build
 pip install setuptools-trial
 
