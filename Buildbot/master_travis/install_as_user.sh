@@ -1,5 +1,6 @@
 #!/bin/bash
-virtualenv --no-site-packages sandbox
+cd $HOME
+virtualenv --no-site-packages $HOME/sandbox
 source sandbox/bin/activate
 
 pip install --upgrade pip
