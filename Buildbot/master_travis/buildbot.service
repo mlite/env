@@ -6,7 +6,7 @@ After=network.target
 [Service]
 Type=forking
 PIDFile=/home/buildbot_master/master/twistd.pid
-WorkingDirectory=/home/buildbot_master/master
+WorkingDirectory=/home/buildbot_master
 ExecStart=/home/buildbot_master/sandbox/bin/buildbot start master
 ExecReload=/home/buildbot_master/sandbox/bin/buildbot reconfig master
 ExecStop=/home/buildbot_master/sandbox/bin/buildbot stop master
