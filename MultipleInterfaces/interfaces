@@ -1,0 +1,19 @@
+allow-hotplug eth0
+#iface eth0 inet dhcp
+iface eth0 inet static
+  address 10.66.xx.9
+  netmask 255.255.255.0
+  gateway 10.66.xx.1
+  dns-nameserver 8.8.8.8
+  dns-nameserver 8.8.4.4
+
+
+allow-hotplug eth1
+iface eth1 inet static
+  address 10.66.yy.9
+  netmask 255.255.255.0
+  # routng table for each interface
+  post-up ip route add 10.66.yy.0/24 eth1 src 10.66.yy.9 table rt2
+  post-up ip route add default via 10.66.yy.1 dev eth1 table rt2
+  post-up ip rule add from 10.66.yy.9/32 table rt2
+  post-up ip rule add to 10.66.yy.9/32 table rt2
