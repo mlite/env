@@ -6,9 +6,9 @@ sudo apt-get install -y libreadline-gplv2-dev \
 
 
 cd /usr/src
-wget https://www.openssl.org/source/openssl-1.1.1a.tar.gz
-tar -xvf openssl-1.1.1a.tar.gz
-cd openssl-1.1.1a
+wget https://www.openssl.org/source/old/1.0.2/openssl-1.0.2u.tar.gz
+tar -xvf openssl-1.0.2u.tar.gz
+cd openssl-1.0.2u
 ./config --shared --prefix=/usr/local/openssl --openssldir=/usr/local/openssl
 make
 make install
